@@ -1,4 +1,4 @@
-import { Game } from "@/types/game";
+import type { Game } from "@/types/game";
 import { DashboardHeader } from "./components/DashboardHeader";
 import { DashboardStats } from "./components/DashboardStats";
 import { GamesGrid } from "./components/GamesGrid";
