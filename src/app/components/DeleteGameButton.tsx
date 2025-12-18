@@ -28,7 +28,7 @@ export default function DeleteGameButton({ id }: { id: number }) {
 		<button
 			type="button"
 			onClick={handleDelete}
-			className="text-red-500 hover:text-red-700 ml-4 font-bold"
+			className="text-zinc-400 hover:text-white ml-4 font-bold"
 			aria-label="Deletar jogo"
 		>
 			✕

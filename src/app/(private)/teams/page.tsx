@@ -41,7 +41,7 @@ export default async function Teams() {
 									<div className="flex items-center gap-4">
 										{team.logoUrl && (
 											<div className="relative shrink-0">
-												<div className="absolute inset-0 rounded-full bg-linear-to-r from-zinc-600 to-slate-600 opacity-30 blur-md" />
+												<div className="absolute inset-0 rounded-full" />
 												<Image
 													src={team.logoUrl}
 													alt={team.name}

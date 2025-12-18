@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import TeamForm from '@/app/components/TeamForm';
+import TeamForm from '@/app/components/Forms/TeamForm';
 import type { Team } from '@/types/Interfaces/ITeam';
 
 export default async function EditTeamPage(props: {
