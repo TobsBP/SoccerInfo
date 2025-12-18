@@ -9,10 +9,9 @@ export default function MenuBar() {
 	const { t } = useLanguage();
 
 	const menuItems = [
-		{ label: t('home'), href: '/' },
+		{ label: t('dashboard'), href: '/' },
 		{ label: t('teams'), href: '/teams' },
 		{ label: t('games'), href: '/games' },
-		{ label: t('dashboard'), href: '/dashboard' },
 	];
 
 	return (
@@ -21,7 +20,7 @@ export default function MenuBar() {
 				{/* Logo/Brand */}
 				<div className="relative">
 					<span className="bg-linear-to-r from-zinc-200 via-slate-100 to-zinc-200 bg-clip-text text-xl font-black tracking-tight text-transparent drop-shadow-[0_0_20px_rgba(150,150,150,0.3)]">
-						Brasileirão
+						Soccer Info
 					</span>
 					<div className="absolute -bottom-1 left-0 h-px w-full bg-linear-to-r from-transparent via-zinc-500 to-transparent opacity-50" />
 				</div>
