@@ -1,14 +1,6 @@
 import DeleteGameButton from "@/app/components/DeleteGameButton";
 import Image from "next/image";
-
-type Game = {
-  id: number;
-  date: string;
-  homeScore: number;
-  awayScore: number;
-  homeTeam: { name: string; logoUrl?: string };
-  awayTeam: { name: string; logoUrl?: string };
-};
+import type { Game } from "@/types/Interfaces/IGame";
 
 export default async function Games() {
   const response = await fetch(
@@ -41,66 +33,66 @@ export default async function Games() {
               {/* Efeito de brilho no hover */}
               <div className="absolute -inset-1 rounded-2xl bg-linear-to-r from-zinc-600 via-slate-500 to-zinc-600 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-20" />
 
-              <div className="relative z-10">
-                {/* Times */}
+              <div className="relative z-10 flex flex-col gap-4">
+                {/* Data */}
+                <div className="text-center">
+                  <span className="text-xs font-medium text-zinc-600">
+                    {new Date(game.date).toLocaleDateString("pt-BR")}
+                  </span>
+                </div>
+
+                {/* Logos e Placar */}
                 <div className="flex items-center justify-between">
                   {/* Home Team */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-1 flex-col items-center gap-3">
                     {game.homeTeam.logoUrl && (
                       <div className="relative">
-                        <div className="absolute inset-0 rounded-full bg-linear-to-r from-zinc-600 to-slate-600 opacity-30 blur-md" />
+                        <div className="absolute inset-0 rounded-full bg-linear-to-r from-zinc-400 to-slate-400 opacity-60 blur-md" />
                         <Image
                           src={game.homeTeam.logoUrl}
                           alt={game.homeTeam.name}
-                          width={44}
-                          height={44}
-                          className="relative h-11 w-11 rounded-full border-2 border-zinc-700/50 object-cover shadow-lg shadow-zinc-800/50"
+                          width={56}
+                          height={56}
+                          className="relative h-14 w-14 object-cover"
                         />
                       </div>
                     )}
-                    <span className="bg-linear-to-r from-zinc-300 to-slate-300 bg-clip-text font-bold text-transparent">
+                    <span className="text-center text-sm font-bold text-zinc-300">
                       {game.homeTeam.name}
                     </span>
                   </div>
 
-                  <span className="text-sm font-semibold text-zinc-500/80 drop-shadow-[0_0_8px_rgba(100,100,100,0.4)]">
-                    VS
-                  </span>
+                  {/* Placar Central */}
+                  <div className="mx-2 flex flex-col items-center">
+                    <div className="rounded-xl bg-linear-to-r from-zinc-950/80 to-black/80 px-5 py-2 backdrop-blur-sm">
+                      <span className="bg-linear-to-r from-zinc-200 via-slate-200 to-zinc-200 bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_15px_rgba(150,150,150,0.5)]">
+                        {game.homeScore} — {game.awayScore}
+                      </span>
+                    </div>
+                  </div>
 
                   {/* Away Team */}
-                  <div className="flex items-center gap-3">
-                    <span className="bg-linear-to-r from-slate-300 to-zinc-300 bg-clip-text font-bold text-transparent">
-                      {game.awayTeam.name}
-                    </span>
+                  <div className="flex flex-1 flex-col items-center gap-3">
                     {game.awayTeam.logoUrl && (
                       <div className="relative">
-                        <div className="absolute inset-0 rounded-full bg-linear-to-r from-slate-600 to-zinc-600 opacity-30 blur-md" />
+                        <div className="absolute inset-0 rounded-full bg-linear-to-r from-slate-400 to-zinc-400 opacity-60 blur-md" />
                         <Image
                           src={game.awayTeam.logoUrl}
                           alt={game.awayTeam.name}
-                          width={44}
-                          height={44}
-                          className="relative h-11 w-11 rounded-full border-2 border-zinc-700/50 object-cover shadow-lg shadow-zinc-800/50"
+                          width={56}
+                          height={56}
+                          className="relative h-14 w-14 object-cover"
                         />
                       </div>
                     )}
-                  </div>
-                </div>
-
-                {/* Placar com efeito neon */}
-                <div className="mt-6 flex flex-col items-center">
-                  <span className="text-sm font-medium text-zinc-600">
-                    {new Date(game.date).toLocaleDateString("pt-BR")}
-                  </span>
-                  <div className="mt-3 rounded-xl bg-linear-to-r from-zinc-950/80 to-black/80 px-6 py-3 backdrop-blur-sm">
-                    <span className="bg-linear-to-r from-zinc-200 via-slate-200 to-zinc-200 bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_15px_rgba(150,150,150,0.5)]">
-                      {game.homeScore} — {game.awayScore}
+                    <span className="text-center text-sm font-bold text-zinc-300">
+                      {game.awayTeam.name}
                     </span>
                   </div>
                 </div>
 
                 {/* Ações */}
-                <div className="mt-6 flex justify-end">
+                <div className="mt-2 flex justify-end">
                   <DeleteGameButton id={game.id} />
                 </div>
               </div>

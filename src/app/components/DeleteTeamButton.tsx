@@ -27,7 +27,7 @@ export default function DeleteTeamButton({ id }: { id: number }) {
   return (
     <button
       type="submit"
-      className="text-red-500 hover:text-red-700 ml-4 font-bold"
+      className="text-zinc-400 hover:text-white transition-colors ml-4 font-bold"
       aria-label="Delete team"
       onClick={handleDelete}
     >

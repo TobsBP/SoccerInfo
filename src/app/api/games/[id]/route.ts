@@ -2,9 +2,10 @@ import { NextResponse } from 'next/server';
 import prisma from "@/lib/prisma";
 
 export async function GET(
-  _: Request,
-  { params }: { params: { id: string } }
+  request: Request,
+  props: { params: Promise<{ id: string }> }
 ) {
+  const params = await props.params;
   const gameId = Number(params.id);
 
   if (Number.isNaN(gameId)) {
@@ -29,9 +30,10 @@ export async function GET(
 }
 
 export async function DELETE(
-  _: Request,
-  { params }: { params: { id: string } }
+  request: Request,
+  props: { params: Promise<{ id: string }> }
 ) {
+  const params = await props.params;
   const gameId = Number(params.id);
 
   if (Number.isNaN(gameId)) {
@@ -60,8 +62,9 @@ export async function DELETE(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
+  const params = await props.params;
   const gameId = Number(params.id);
   
   if (Number.isNaN(gameId)) {

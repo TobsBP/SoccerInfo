@@ -14,7 +14,7 @@ import {
   Cell,
   Legend,
 } from "recharts";
-import type { Game } from "@/types/game";
+import type { Game } from "@/types/Interfaces/IGame";
 import { Trophy, Percent, Activity } from "lucide-react";
 import { calculateDashboardStats } from "@/utils/dashboard-stats";
 import { useLanguage } from "@/contexts/LanguageContext";

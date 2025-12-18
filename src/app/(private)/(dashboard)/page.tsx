@@ -1,4 +1,4 @@
-import type { Game } from "@/types/game";
+import type { Game } from "@/types/Interfaces/IGame";
 import { DashboardHeader } from "../../components/dashboard/DashboardHeader";
 import { DashboardStats } from "../../components/dashboard/DashboardStats";
 import { DashboardCharts } from "../../components/dashboard/DashboardCharts";

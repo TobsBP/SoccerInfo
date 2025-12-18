@@ -1,11 +1,8 @@
 import DeleteTeamButton from "@/app/components/DeleteTeamButton";
+import EditTeamButton from "@/app/components/EditTeamButton";
 import Image from "next/image";
-
-type Team = {
-  id: number;
-  name: string;
-  logoUrl?: string | null;
-};
+import Link from "next/link";
+import type { Team } from "@/types/Interfaces/ITeam";
 
 export default async function Teams() {
   const response = await fetch(
@@ -38,28 +35,45 @@ export default async function Teams() {
               {/* Efeito de brilho no hover */}
               <div className="absolute -inset-1 rounded-2xl bg-linear-to-r from-zinc-600 via-slate-500 to-zinc-600 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-20" />
 
-              <div className="relative z-10">
-                {/* Info do time */}
-                <div className="flex items-center gap-4">
-                  {team.logoUrl && (
-                    <div className="relative shrink-0">
-                      <div className="absolute inset-0 rounded-full bg-linear-to-r from-zinc-600 to-slate-600 opacity-30 blur-md" />
-                      <Image
-                        src={team.logoUrl}
-                        alt={team.name}
-                        width={56}
-                        height={56}
-                        className="relative h-14 w-14 rounded-full border-2 border-zinc-700/50 object-cover shadow-lg shadow-zinc-800/50"
-                      />
+              <div className="relative z-10 flex h-full flex-col justify-between">
+                {/* Info do time - Clickable Area */}
+                <Link href={`/teams/${team.id}`} className="block flex-1">
+                  <div className="flex items-center gap-4">
+                    {team.logoUrl && (
+                      <div className="relative shrink-0">
+                        <div className="absolute inset-0 rounded-full bg-linear-to-r from-zinc-600 to-slate-600 opacity-30 blur-md" />
+                        <Image
+                          src={team.logoUrl}
+                          alt={team.name}
+                          width={60}
+                          height={60}
+                          className="relative h-14 w-14 border-2"
+                        />
+                      </div>
+                    )}
+                    <div className="flex flex-col">
+                      <span className="bg-linear-to-r from-zinc-200 to-slate-200 bg-clip-text text-lg font-bold text-transparent group-hover:text-white transition-colors">
+                        {team.name}
+                      </span>
+                      <div className="flex flex-col text-xs text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                        {(team.city || team.state) && (
+                          <span>
+                            {team.city}
+                            {team.city && team.state && " - "}
+                            {team.state}
+                          </span>
+                        )}
+                        {team.foundedYear && (
+                          <span>Since {team.foundedYear}</span>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  <span className="flex-1 bg-linear-to-r from-zinc-200 to-slate-200 bg-clip-text text-lg font-bold text-transparent">
-                    {team.name}
-                  </span>
-                </div>
+                  </div>
+                </Link>
 
                 {/* Ação */}
-                <div className="mt-4 flex justify-end border-t border-zinc-800/50 pt-4">
+                <div className="mt-4 flex justify-end gap-2 border-t border-zinc-800/50 pt-4">
+                  <EditTeamButton id={team.id} />
                   <DeleteTeamButton id={team.id} />
                 </div>
               </div>
