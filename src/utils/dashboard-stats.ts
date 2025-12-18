@@ -1,4 +1,4 @@
-import type { Game } from '@/types/game';
+import type { Game } from '@/types/Interfaces/IGame';
 
 export interface TeamStat {
 	name: string;

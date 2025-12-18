@@ -11,6 +11,7 @@ export default function MenuBar() {
 	const menuItems = [
 		{ label: t('dashboard'), href: '/' },
 		{ label: t('teams'), href: '/teams' },
+		{ label: t('players'), href: '/players' },
 		{ label: t('games'), href: '/games' },
 	];
 

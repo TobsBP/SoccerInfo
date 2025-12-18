@@ -34,14 +34,16 @@ model Teams {
 }
 
 model Players {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   position    String?
   number      Int?
-  gols        Int     @default(0)
-  assists     Int     @default(0)
-  yellowCards Int     @default(0)
-  redCards    Int     @default(0)
+  gols        Int      @default(0)
+  assists     Int      @default(0)
+  yellowCards Int      @default(0)
+  redCards    Int      @default(0)
+  lastTeams   String[] @default([])
+  imageUrl    String?
 
   teamId Int?
   team   Teams? @relation(fields: [teamId], references: [id])

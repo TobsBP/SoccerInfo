@@ -14,6 +14,7 @@ const translations = {
 		// Menu
 		home: 'Home',
 		teams: 'Times',
+		players: 'Jogadores',
 		games: 'Jogos',
 		dashboard: 'Dashboard',
 
@@ -75,6 +76,7 @@ const translations = {
 		// Menu
 		home: 'Home',
 		teams: 'Teams',
+		players: 'Players',
 		games: 'Games',
 		dashboard: 'Dashboard',
 
