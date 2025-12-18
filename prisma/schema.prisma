@@ -8,49 +8,64 @@ datasource db {
 }
 
 model Teams {
-  id        Int     @id @default(autoincrement())
-  name      String
-  logoUrl   String?
+  id      Int     @id @default(autoincrement())
+  name    String
+  logoUrl String?
 
-  homeGames Games[]  @relation("HomeTeam")
-  awayGames Games[]  @relation("AwayTeam")
+  foundedYear Int?    
+  stadium     String? 
+  city        String?
+  state       String?
+  country     String  @default("Brasil")
+
+  titlesTotal  Int @default(0)
+  titlesLeague Int @default(0)
+  titlesCup    Int @default(0)
+  titlesIntl   Int @default(0)
+
+  colors      String?
+  website     String?
+  socialMedia String?
+
+  homeGames Games[] @relation("HomeTeam")
+  awayGames Games[] @relation("AwayTeam")
 }
 
 model Games {
-  id            Int      @id @default(autoincrement())
-  date          DateTime
+  id   Int      @id @default(autoincrement())
+  date DateTime
 
-  homeTeamId    Int
-  awayTeamId    Int
+  homeTeamId Int
+  awayTeamId Int
 
-  homeScore     Int      @default(0)
-  awayScore     Int      @default(0)
+  homeScore Int @default(0)
+  awayScore Int @default(0)
 
-  finished      Boolean  @default(false)
+  finished Boolean @default(false)
 
-  homeTeam      Teams     @relation("HomeTeam", fields: [homeTeamId], references: [id])
-  awayTeam      Teams     @relation("AwayTeam", fields: [awayTeamId], references: [id])
+  homeTeam Teams @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam Teams @relation("AwayTeam", fields: [awayTeamId], references: [id])
 
   @@index([homeTeamId])
   @@index([awayTeamId])
 }
 
 model User {
-  id            String          @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String          @unique
+  email         String    @unique
   emailVerified DateTime?
   password      String?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  
+
   Authenticator Authenticator[]
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
- 
+
 model Account {
   userId            String
   type              String
@@ -63,33 +78,33 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([provider, providerAccountId])
 }
- 
+
 model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
- 
+
 model VerificationToken {
   identifier String
   token      String
   expires    DateTime
- 
+
   @@id([identifier, token])
 }
- 
+
 model Authenticator {
   credentialID         String  @unique
   userId               String
@@ -99,8 +114,8 @@ model Authenticator {
   credentialDeviceType String
   credentialBackedUp   Boolean
   transports           String?
- 
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@id([userId, credentialID])
 }
