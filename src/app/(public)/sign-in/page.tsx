@@ -50,7 +50,7 @@ export default function Login() {
             {/* Logo/Header */}
             <div className="mb-8 text-center">
               <h1 className="mb-2 bg-linear-to-r from-zinc-200 via-slate-100 to-zinc-200 bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_20px_rgba(150,150,150,0.3)]">
-                Brasileirão
+                Soccer Info
               </h1>
               <p className="text-sm text-zinc-500">Entre para gerenciar os jogos</p>
             </div>
@@ -118,7 +118,8 @@ export default function Login() {
                 <span className="relative z-10">
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">
-                      <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24">
+                      <svg className="h-5 w-5 animate-spin"  viewBox="0 0 24 24">
+                        <title> Loading </title>
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>

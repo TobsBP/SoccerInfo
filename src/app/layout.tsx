@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import MenuBar from "./components/ui/NavBar";
+import Footer from "./components/ui/Footer";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{ background: "black", color: '#fff', fontFamily: 'sans-serif'}}>
-        <MenuBar/>
-        {children}
+      <body
+        style={{ background: "black", color: "#fff", fontFamily: "sans-serif" }}
+      >
+        <LanguageProvider>
+          <MenuBar />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

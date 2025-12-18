@@ -1,15 +1,19 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-const menuItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Teams', href: '/teams' },
-  { label: 'Games', href: '/games' },
-];
+import { LanguageToggle } from '../LanguageToggle';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function MenuBar() {
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const menuItems = [
+    { label: t('home'), href: '/' },
+    { label: t('teams'), href: '/teams' },
+    { label: t('games'), href: '/games' },
+    { label: t('dashboard'), href: '/dashboard' },
+  ];
   
   return (
     <nav className="w-full border-b border-zinc-800/50 bg-linear-to-r from-zinc-950 via-black to-zinc-950 backdrop-blur-xl">
@@ -61,6 +65,7 @@ export default function MenuBar() {
               </li>
             );
           })}
+        <LanguageToggle />
         </ul>
       </div>
     </nav>

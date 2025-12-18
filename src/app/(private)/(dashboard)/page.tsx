@@ -1,7 +1,7 @@
 import type { Game } from "@/types/game";
-import { DashboardHeader } from "./components/DashboardHeader";
-import { DashboardStats } from "./components/DashboardStats";
-import { GamesGrid } from "./components/GamesGrid";
+import { DashboardHeader } from "../../components/dashboard/DashboardHeader";
+import { DashboardStats } from "../../components/dashboard/DashboardStats";
+import { DashboardCharts } from "../../components/dashboard/DashboardCharts";
 
 async function getGames(): Promise<Game[]> {
   const res = await fetch('http://localhost:3000/api/games', {
@@ -11,7 +11,6 @@ async function getGames(): Promise<Game[]> {
   if (!res.ok) {
     throw new Error('Failed to fetch games');
   }
-
   return res.json();
 }
 
@@ -23,7 +22,7 @@ export default async function Dashboard() {
       <main className="mx-auto max-w-7xl">
         <DashboardHeader />
         <DashboardStats games={games} />
-        <GamesGrid games={games} />
+        <DashboardCharts games={games} />
       </main>
     </div>
   );

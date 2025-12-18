@@ -76,7 +76,7 @@ export default function Register() {
               <h1 className="mb-2 bg-linear-to-r from-zinc-200 via-slate-100 to-zinc-200 bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_20px_rgba(150,150,150,0.3)]">
                 Criar Conta
               </h1>
-              <p className="text-sm text-zinc-500">Junte-se ao Brasileirão</p>
+              <p className="text-sm text-zinc-500">Junte-se ao Soccer Info</p>
             </div>
 
             {/* Form */}
