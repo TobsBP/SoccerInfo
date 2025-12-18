@@ -1,8 +1,15 @@
-import NextAuth from "next-auth"
-import { authConfig } from "./auth.config"
+import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
  
-export default NextAuth(authConfig).auth
+// This function can be marked `async` if using `await` inside
+export function proxy(request: NextRequest) {
+  return NextResponse.redirect(new URL('/login', request.url))
+}
  
+// Alternatively, you can use a default export:
+// export default function proxy(request: NextRequest) { ... }
+ 
+// See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: '/about/:path*',
 }
