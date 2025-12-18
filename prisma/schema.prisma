@@ -12,8 +12,8 @@ model Teams {
   name    String
   logoUrl String?
 
-  foundedYear Int?    
-  stadium     String? 
+  foundedYear Int?
+  stadium     String?
   city        String?
   state       String?
   country     String  @default("Brasil")
@@ -29,6 +29,25 @@ model Teams {
 
   homeGames Games[] @relation("HomeTeam")
   awayGames Games[] @relation("AwayTeam")
+
+  players Players[]
+}
+
+model Players {
+  id          Int     @id @default(autoincrement())
+  name        String
+  position    String?
+  number      Int?
+  gols        Int     @default(0)
+  assists     Int     @default(0)
+  yellowCards Int     @default(0)
+  redCards    Int     @default(0)
+
+  teamId Int?
+  team   Teams? @relation(fields: [teamId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Games {
