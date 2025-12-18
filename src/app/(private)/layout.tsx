@@ -1,20 +1,16 @@
-import { redirect } from "next/navigation";
-import { auth } from "@/auth";
+import { redirect } from 'next/navigation';
+import { auth } from '@/auth';
 
 export default async function PrivateLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  const session = await auth();
+	const session = await auth();
 
-  if (!session) {
-    redirect("/sing-in");
-  }
+	if (!session) {
+		redirect('/sing-in');
+	}
 
-  return (
-    <div>
-      {children}
-    </div>
-  );
+	return <div>{children}</div>;
 }

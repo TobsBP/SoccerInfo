@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { Pencil } from "lucide-react";
+import { Pencil } from 'lucide-react';
+import Link from 'next/link';
 
 export default function EditTeamButton({ id }: { id: number }) {
-  return (
-    <Link
-      href={`/teams/${id}/edit`}
-      className="text-zinc-400 hover:text-white transition-colors p-1"
-      aria-label="Edit team"
-    >
-      <Pencil size={18} />
-    </Link>
-  );
+	return (
+		<Link
+			href={`/teams/${id}/edit`}
+			className="text-zinc-400 hover:text-white transition-colors p-1"
+			aria-label="Edit team"
+		>
+			<Pencil size={18} />
+		</Link>
+	);
 }
