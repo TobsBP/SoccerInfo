@@ -11,3 +11,9 @@ export interface Game {
 	homeTeam: Team;
 	awayTeam: Team;
 }
+
+export interface GameDetailsPageProps {
+	params: Promise<{
+		id: string;
+	}>;
+}
