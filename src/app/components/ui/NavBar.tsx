@@ -13,6 +13,7 @@ export default function MenuBar() {
 		{ label: t('teams'), href: '/teams' },
 		{ label: t('players'), href: '/players' },
 		{ label: t('games'), href: '/games' },
+		{ label: t('profile'), href: '/profile' },
 	];
 
 	return (

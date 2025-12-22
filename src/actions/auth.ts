@@ -1,6 +1,7 @@
 'use server';
 
 import bcrypt from 'bcryptjs';
+import { AuthError } from 'next-auth';
 import { signIn, signOut } from '@/auth';
 import prisma from '@/lib/prisma';
 
@@ -19,8 +20,11 @@ export async function loginWithCredentials(formData: FormData) {
 			redirectTo: '/',
 		});
 	} catch (error) {
-		if ((error as Error).message.includes('CredentialsSignin')) {
-			return { error: 'Credenciais inválidas.' };
+		if (error instanceof AuthError) {
+			if (error.type === 'CredentialsSignin') {
+				return { error: 'Credenciais inválidas.' };
+			}
+			return { error: 'Algo deu errado. Tente novamente.' };
 		}
 		throw error;
 	}
@@ -61,5 +65,5 @@ export async function register(formData: FormData) {
 }
 
 export async function logout() {
-	await signOut({ redirectTo: '/sing-in' });
+	await signOut({ redirectTo: '/sign-in' });
 }

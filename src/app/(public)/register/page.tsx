@@ -47,6 +47,9 @@ export default function Register() {
 			}
 		} catch (error) {
 			console.error(error);
+			if ((error as Error).message === 'NEXT_REDIRECT') {
+				return;
+			}
 			alert('Erro ao criar conta. Tente novamente.');
 		} finally {
 			setIsLoading(false);
@@ -267,7 +270,7 @@ export default function Register() {
 						<p className="mt-6 text-center text-sm text-zinc-500">
 							Já tem uma conta?{' '}
 							<Link
-								href="/sing-in"
+								href="/sign-in"
 								className="font-medium text-zinc-300 transition-colors hover:text-zinc-100"
 							>
 								Fazer login

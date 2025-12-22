@@ -57,7 +57,7 @@ export default function Footer() {
 								</svg>
 							</a>
 							<a
-								href="https://github.com"
+								href="https://github.com/TobsBP/"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="group flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-900/50 transition-all duration-300 hover:bg-zinc-800 hover:shadow-[0_0_20px_rgba(100,100,100,0.3)]"

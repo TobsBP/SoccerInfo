@@ -9,7 +9,7 @@ export default async function PrivateLayout({
 	const session = await auth();
 
 	if (!session) {
-		redirect('/sing-in');
+		redirect('/sign-in');
 	}
 
 	return <div>{children}</div>;

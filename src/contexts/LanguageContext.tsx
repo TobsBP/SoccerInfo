@@ -17,6 +17,7 @@ const translations = {
 		players: 'Jogadores',
 		games: 'Jogos',
 		dashboard: 'Dashboard',
+		profile: 'Perfil',
 
 		// Botões
 		login: 'Entrar',
@@ -79,6 +80,7 @@ const translations = {
 		players: 'Players',
 		games: 'Games',
 		dashboard: 'Dashboard',
+		profile: 'Profile',
 
 		// Botões
 		login: 'Login',

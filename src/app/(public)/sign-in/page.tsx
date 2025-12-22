@@ -23,6 +23,9 @@ export default function Login() {
 			}
 		} catch (error) {
 			console.error(error);
+			if ((error as Error).message === 'NEXT_REDIRECT') {
+				return;
+			}
 			alert('Erro ao fazer login. Tente novamente.');
 		} finally {
 			setIsLoading(false);
